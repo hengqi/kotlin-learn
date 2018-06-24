@@ -23,6 +23,11 @@ class Student3(val username: String = "zhangsan") {
 
 fun main(args: Array<String>) {
     val student = Student("zhangsan", 20, "shenzhen")
-
     student.printInfo()
+
+    var student3 = Student3()
+    println(student3.username)
+
+    student3 = Student3("lisi")
+    println(student3.username)
 }
