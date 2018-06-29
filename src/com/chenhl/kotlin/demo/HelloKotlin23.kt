@@ -20,6 +20,10 @@ fun main(args: Array<String>) {
 
     myPrint(AA())
     myPrint(BB())//调用是由对象的声明类型所决定的，而不是由对象的实际类型决定
+
+    println("------")
+    CC().foo()
+    CC().foo(2)
 }
 
 // 扩展,表示multiply是ExtensionTest的一个扩展方法，好比该类已经拥有该方法了
@@ -44,4 +48,24 @@ fun BB.a() = "b"
 
 fun myPrint(aa: AA) {
     println(aa.a())
+}
+
+// 关于扩展
+// 1.如果类中已经由一个方法foo,如果对该类的foo方法进行扩展的话，以类中的方法为主
+class CC {
+    fun foo() {
+        println("member")
+    }
+}
+
+fun CC.foo(i: Int) {// 扩展后重载了
+    println("member2")
+}
+
+// 2.对可null的类型扩展
+fun Any?.toString(): String {
+    if (this == null) {
+        return "null"
+    }
+    return toString()
 }
